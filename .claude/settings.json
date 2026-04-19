@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{try{const i=JSON.parse(d);const f=i.tool_input&&i.tool_input.file_path||'';if(f.includes('snake_game/src/')&&f.endsWith('.js')){process.exit(0);}process.exit(1);}catch(e){process.exit(1);}});\" && cd e:/claude_code && npm test --silent 2>&1 | tail -5 || true",
+            "statusMessage": "Running Snake tests..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"Snake Game — npm run dev (port 8000) | npm test (28 tests) | Skills: /dev /validate /game-status /test-watch /add-feature\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}
