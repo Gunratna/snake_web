@@ -1,6 +1,5 @@
 # Snake Game
-
-A classic Snake game implementation built with vanilla HTML5 Canvas and JavaScript.
+Demo game
 
 ## Quick Start
 
